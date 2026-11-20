@@ -1,5 +1,8 @@
 let humanScore = 0;
 let computerScore = 0;
+const w = "You win!";
+const l = "You lose!";
+const d = "Draw!"
 
 function getComputerChoice(){
     
@@ -11,7 +14,7 @@ function getComputerChoice(){
 
 function getHumanChoice(){
 
-    let a = prompt("ROCK PAPER OR SCISSORS?");
+    let a = prompt("ROCK PAPER SCISSORS SHOOT!");
     return a;
 }
 
@@ -21,28 +24,27 @@ function playRound(humanChoice, computerChoice){
     computerChoice = computerChoice.toLowerCase();
 
     if (humanChoice === "rock" && computerChoice === "scissors"){
-        console.log("You win!");
+        console.log(w);
         humanScore++
     } else if (humanChoice === "rock" && computerChoice === "paper"){
-        console.log("You lose!"); 
+        console.log(l); 
         computerScore++
     } else if (humanChoice === "paper" && computerChoice === "scissors"){
-        console.log("You lose!");
+        console.log(l);
         computerScore++
     } else if (humanChoice === "paper" && computerChoice === "rock"){
-        console.log("You win!");
+        console.log(w);
         humanScore++
     } else if (humanChoice === "scissors" && computerChoice === "paper"){
-        console.log("You win!");
+        console.log(w);
         humanScore++
     } else if (humanChoice === "scissors" && computerChoice === "rock"){
-        console.log("You lose!");
+        console.log(l);
         computerScore++
     } else { 
-        console.log("Draw!");
+        console.log(d);
     };
-
-};
+}
 
 function playGame(){
     
@@ -53,15 +55,12 @@ function playGame(){
    }
 
    if (humanScore > computerScore){
-    console.log("You win!"); 
+    console.log(w);
    } else if (humanScore < computerScore){
-    console.log("You lose!");
+    console.log(l);
    } else {
-    console.log("Draw!");
-    
+    console.log(d);
    }
-
 }
-
 
 playGame();
