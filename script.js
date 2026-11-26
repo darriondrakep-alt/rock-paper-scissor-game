@@ -1,10 +1,6 @@
 let humanScore = 0;
 let computerScore = 0;
 let draw = 0;
-const w = "You win!";
-const l = "You lose!";
-const d = "Draw!"
-
    
     const buttons = document.querySelectorAll('.btns');
 
@@ -23,31 +19,33 @@ function getComputerChoice(){
     return options[answer];
 }
     
-    const scoreboard = document.querySelector("#scoreboard");  
+    const scoreboard = document.querySelector("#scoreboard"); 
+    const announce = document.querySelector('#announce'); 
+
 
 function playRound(humanChoice, computerChoice){
      
 
     if (humanChoice === "rock" && computerChoice === "scissors"){
-        alert(w);
+        announce.textContent = "You win!";
         humanScore++
     } else if (humanChoice === "rock" && computerChoice === "paper"){
-        alert(l); 
+        announce.textContent = "You lose!"; 
         computerScore++;
     } else if (humanChoice === "paper" && computerChoice === "scissors"){
-        alert(l);
+        announce.textContent = "You lose!";
         computerScore++;
     } else if (humanChoice === "paper" && computerChoice === "rock"){
-        alert(w);
+        announce.textContent = "You win!";
         humanScore++;
     } else if (humanChoice === "scissors" && computerChoice === "paper"){
-        alert(w);
+        announce.textContent = "You win!";
         humanScore++;
     } else if (humanChoice === "scissors" && computerChoice === "rock"){
-        alert(l);
+        announce.textContent = "You lose!";
         computerScore++;
     } else { 
-        alert(d);
+        announce.textContent = "Draw!";
         draw++;
     };
 
@@ -55,12 +53,12 @@ function playRound(humanChoice, computerChoice){
     console.log(scoreboard);
 
     if (humanScore === 5){
-        console.log(w);
+        announce.textContent = "You won the Game!";
         humanScore = 0;
         computerScore = 0;
         draw = 0;
     } else if (computerScore === 5){
-        console.log(l);
+        announce.textContent = "You lose! Try again."
         humanScore = 0;
         computerScore = 0;
         draw = 0;
