@@ -1,6 +1,6 @@
-let humanScore = 0;
-let computerScore = 0;
-let draw = 0;
+    let humanScore = 0;
+    let computerScore = 0;
+    let draw = 0;
    
     const buttons = document.querySelectorAll('.btns');
 
@@ -9,7 +9,7 @@ let draw = 0;
             console.log('Clicked:', event.currentTarget.textContent);
             const computerSelection = getComputerChoice();
             playRound(button.id, computerSelection);
-        });      
+        });    
     });
 
 function getComputerChoice(){
@@ -23,8 +23,8 @@ function getComputerChoice(){
     const announce = document.querySelector('#announce'); 
 
 
+
 function playRound(humanChoice, computerChoice){
-     
 
     if (humanChoice === "rock" && computerChoice === "scissors"){
         announce.textContent = "You win!";
@@ -49,19 +49,45 @@ function playRound(humanChoice, computerChoice){
         draw++;
     };
 
-    scoreboard.textContent = `Score: ${humanScore} - ${draw} - ${computerScore}`;
-    console.log(scoreboard);
+        scoreboard.textContent = `Score: ${humanScore} - ${draw} - ${computerScore}`;
+        const playAgainContainer = document.querySelector('#play-again-con');
+        const playAgainButton = document.createElement("button");
+        playAgainButton.id = 'play-again-btn';
 
     if (humanScore === 5){
-        announce.textContent = "You won the Game!";
-        humanScore = 0;
-        computerScore = 0;
-        draw = 0;
-    } else if (computerScore === 5){
-        announce.textContent = "You lose! Try again."
-        humanScore = 0;
-        computerScore = 0;
-        draw = 0;
-    };
+        announce.textContent = "You won the game!";
+        buttons.forEach((button) => {
+            button.disabled = true;
+        });
 
+        playAgainButton.textContent = "Play again";
+        playAgainContainer.appendChild(playAgainButton);
+        playAgainButton.addEventListener('click', () => {
+            playAgainButton.hidden = true;
+            humanScore = 0;
+            computerScore = 0;
+            draw = 0;
+            buttons.forEach((button) =>{
+                button.disabled = false;
+            });
+        });
+        
+    } else if (computerScore === 5){
+        announce.textContent = "You lose! Try again.";
+        buttons.forEach((button) => {
+            button.disabled = true;
+        });
+
+        playAgainButton.textContent = "Play again";
+        playAgainContainer.appendChild(playAgainButton);
+        playAgainButton.addEventListener('click', () => {
+            playAgainButton.hidden = true;
+            humanScore = 0;
+            computerScore = 0;
+            draw = 0;
+            buttons.forEach((button) =>{
+                button.disabled = false;
+            });
+        });
+    };
 };
