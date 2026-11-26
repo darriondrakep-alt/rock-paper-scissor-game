@@ -7,6 +7,7 @@ const d = "Draw!"
 
    
     const buttons = document.querySelectorAll('.btns');
+
     buttons.forEach((button) => {
         button.addEventListener('click', (event) => {
             console.log('Clicked:', event.currentTarget.textContent);
@@ -55,15 +56,14 @@ function playRound(humanChoice, computerChoice){
 
     if (humanScore === 5){
         console.log(w);
+        humanScore = 0;
+        computerScore = 0;
+        draw = 0;
     } else if (computerScore === 5){
         console.log(l);
+        humanScore = 0;
+        computerScore = 0;
+        draw = 0;
     };
 
-    /*const announcer = document.createElement("div");
-    const winner = document.createElement("div");
-    winner.textContent("Congratulations you win!");
-    const loser = document.createElement("div");
-    loser.textContent("Sorry you lose!")
-    announcer.appendChild(winner);
-    announcer.appendChild(loser);*/
 };
