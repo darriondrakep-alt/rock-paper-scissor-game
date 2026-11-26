@@ -6,21 +6,13 @@ const l = "You lose!";
 const d = "Draw!"
 
    
-    let rock = document.querySelector("#rock");
-    rock.addEventListener('click', () => {
-        const computerSelection = getComputerChoice();
-        playRound("rock", computerSelection);
-        
-    });
-    let paper = document.querySelector("#paper");
-    paper.addEventListener('click', () => {
-        const computerSelection = getComputerChoice();
-        playRound("paper", computerSelection);
-    });
-    let scissors = document.querySelector("#scissors")
-    scissors.addEventListener('click', () =>{
-        const computerSelection = getComputerChoice();
-        playRound("scissors", computerSelection);
+    const buttons = document.querySelectorAll('.btns');
+    buttons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+            console.log('Clicked:', event.currentTarget.textContent);
+            const computerSelection = getComputerChoice();
+            playRound(button.id, computerSelection);
+        });      
     });
 
 function getComputerChoice(){
@@ -30,11 +22,7 @@ function getComputerChoice(){
     return options[answer];
 }
     
-    const scoreboard = document.querySelector("#scoreboard");
-    /*const score = document.createElement("p");
-    scoreboard.appendChild(score);*/
-    
- 
+    const scoreboard = document.querySelector("#scoreboard");  
 
 function playRound(humanChoice, computerChoice){
      
@@ -61,7 +49,21 @@ function playRound(humanChoice, computerChoice){
         alert(d);
         draw++;
     };
+
     scoreboard.textContent = `Score: ${humanScore} - ${draw} - ${computerScore}`;
     console.log(scoreboard);
-}
 
+    if (humanScore === 5){
+        console.log(w);
+    } else if (computerScore === 5){
+        console.log(l);
+    };
+
+    /*const announcer = document.createElement("div");
+    const winner = document.createElement("div");
+    winner.textContent("Congratulations you win!");
+    const loser = document.createElement("div");
+    loser.textContent("Sorry you lose!")
+    announcer.appendChild(winner);
+    announcer.appendChild(loser);*/
+};
