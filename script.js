@@ -21,7 +21,7 @@ function getComputerChoice(){
     
     const scoreboard = document.querySelector("#scoreboard"); 
     const announce = document.querySelector('#announce'); 
-
+    announce.textContent = "Make your move!"
 
 
 function playRound(humanChoice, computerChoice){
@@ -56,6 +56,7 @@ function playRound(humanChoice, computerChoice){
 
     if (humanScore === 5){
         announce.textContent = "You won the game!";
+        document.documentElement.style.backgroundColor = 'green';
         buttons.forEach((button) => {
             button.disabled = true;
         });
@@ -63,6 +64,8 @@ function playRound(humanChoice, computerChoice){
         playAgainButton.textContent = "Play again";
         playAgainContainer.appendChild(playAgainButton);
         playAgainButton.addEventListener('click', () => {
+            document.documentElement.style.backgroundColor = 'white';
+            announce.textContent = "New game! Make your move.";
             playAgainButton.hidden = true;
             humanScore = 0;
             computerScore = 0;
@@ -74,6 +77,7 @@ function playRound(humanChoice, computerChoice){
         
     } else if (computerScore === 5){
         announce.textContent = "You lose! Try again.";
+        document.documentElement.style.backgroundColor = 'red';
         buttons.forEach((button) => {
             button.disabled = true;
         });
@@ -81,6 +85,8 @@ function playRound(humanChoice, computerChoice){
         playAgainButton.textContent = "Play again";
         playAgainContainer.appendChild(playAgainButton);
         playAgainButton.addEventListener('click', () => {
+            document.documentElement.style.backgroundColor = 'white';
+            announce.textContent = "New game! Make your move.";
             playAgainButton.hidden = true;
             humanScore = 0;
             computerScore = 0;
